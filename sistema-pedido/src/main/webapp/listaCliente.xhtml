@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+				<h3>Lista de clientes</h3>
+				
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Nome</th>
+				      <th scope="col">Login</th>
+				      <th scope="col">Idade</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <ui:repeat var="cliente" value="#{mbeanCliente.clientes}" varStatus="index">
+				    <tr>
+				      <th scope="row">#{index.index + 1}</th>
+				      <td>#{cliente.nome}</td>
+				      <td>#{cliente.login}</td>
+				      <td>#{cliente.idade}</td>
+				    </tr>
+				    </ui:repeat>
+				  </tbody>
+				</table>
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+	
+    		</ui:define>
+
+      </ui:composition>
+    </h:body>
+
+</html>
+	

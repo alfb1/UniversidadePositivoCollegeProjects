@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+
+				<h3>Lista de Veículos</h3>
+		
+				<form jsf:id="formTable">
+				<table class="table">
+					<thead>
+						<tr>
+						    <th scope="col">Ações</th>
+							<th scope="col">#</th>
+							<th scope="col">Placa</th>
+							<th scope="col">Marca</th>
+							<th scope="col">Cor</th>
+							<th scope="col">Combustível</th>
+							<th scope="col">Ano</th>
+							<th scope="col">Modelo</th>
+							<th scope="col">Acessórios</th>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat var="veiculo"
+							value="#{mbeanVeiculo.veiculos}" varStatus="index">
+							<tr>
+							<td>
+							<div class="btn-group" role="group">
+							  <button type="submit" 
+							          class="btn btn-success" 
+							          jsf:id="#{'edt'.concat(index.index)}" 
+							          jsf:action="#{mbeanVeiculo.editarVeiculo(veiculo)}">
+		                         <i class="fa fa-edit"></i>
+		                         
+		                      </button>
+		                      <button type="submit" 
+		                              class="btn btn-danger" 
+		                              jsf:id="#{'del'.concat(index.index)}" 
+		                              jsf:action="#{mbeanVeiculo.deletar(veiculo)}">
+		                         <i class="fa fa-trash-o"></i>
+		                         <f:ajax execute="@this" render=":formTable" />
+		                      </button>
+		                      </div>
+							</td>
+								<td scope="row">#{index.index + 1}</td>
+								<td>#{veiculo.placa}</td>
+								<td>#{veiculo.marca}</td>
+								<td>#{veiculo.cor}</td>
+								<td>#{veiculo.combustivel}</td>
+								<td>#{veiculo.anoFabricacao}</td>
+								<td>#{veiculo.anoModelo}</td>
+								<td>
+								  #{veiculo.manual       ? " - Manual"        : "" }
+								  #{veiculo.chaveReserva ? " - Chave Reserva" : "" }
+								  #{veiculo.macaco       ? " - Macaco"        : "" }
+								  #{veiculo.triangulo    ? " - Triângulo"     : "" }
+								  #{veiculo.step         ? " - Step"          : "" }
+								  #{veiculo.chaveRoda    ? " - Chave de Roda" : "" }
+								  
+								</td>
+							</tr>
+		
+						</ui:repeat>
+					</tbody>
+				</table>
+				</form>
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+					</ul>
+				</nav>
+		
+    		</ui:define>
+      </ui:composition>
+      
+    </h:body>
+
+</html>
+		

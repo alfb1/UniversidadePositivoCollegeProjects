@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+  
+				<h3>Cadastro de Veículos</h3>
+				<form jsf:id="form">
+				    <div class="row">
+						<div class="form-group col-6">
+							<label for="placa">Placa</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "placa"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.placa}"
+								   placeholder = "Digite a placa do veículo" />
+						</div>
+						<div class="form-group col-6">
+							<LABEL for="marca">Marca</LABEL> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "marca"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.marca}"
+								   placeholder = "Digite a marca do veículo" />
+						</div>
+					</div>
+
+				   <div class="row">
+						<div class="form-group col-6">
+							<label for="ano">Ano</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "ano"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.anoFabricacao}"
+								   placeholder = "Digite o ano do veiculo" />
+						</div>
+		
+						<div class="form-group col-6">
+							<label for="modelo">Modelo</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "modelo"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.anoModelo}"
+								   placeholder = "Digite o modelo do veículo" />
+						</div>
+					</div>
+	            	<div class="row">
+						<div class="form-group col-6">
+							<label for="chassi">Chassi</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "chassi"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.chassi}"
+								   placeholder = "Digite o chassi do veiculo" />
+						</div>
+		
+						<div class="form-group col-6">
+							<label for="combustivel">Combustível</label> 
+							<h:selectOneMenu  class= "form-control" value="#{mbeanVeiculo.veiculo.combustivel}">
+							  <f:selectItem itemValue=""         itemLabel="Selecione um combustível" /> 
+							  <f:selectItem itemValue="gasolina" itemLabel="Gasolina" />
+							  <f:selectItem itemValue="alcool"   itemLabel="Álcool" />
+							  <f:selectItem itemValue="diesel"   itemLabel="Diesel" />
+							  <f:selectItem itemValue="hibrido"  itemLabel="Híbidro" />
+							  <f:selectItem itemValue="eletrico" itemLabel="Elétrico" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+				   	<div class="row">
+						<div class="form-group col-6">
+							<label for="cor">Cor</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "cor"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.cor}"
+								   placeholder = "Digite a cor do veículo" />    
+						</div>
+		
+						<div class="form-group col-6">
+							<label for="potencia">Potência</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "potencia"
+								   jsf:value   = "#{mbeanVeiculo.veiculo.potencia}"
+								   placeholder = "Digite a potência do veículo" />
+						</div>
+					</div>
+		        
+		            <div class="row"> 
+			        	<div class="form-group col-6">
+							<label for="descricaoAtividade">Descrição dos opcionais</label>
+							<textarea class       = "form-control" 
+							          rows        = "3" 
+							          jsf:id      = "descricaoAtividade"
+									  jsf:value   = "#{mbeanVeiculo.veiculo.opcionais}"
+									  placeholder = "Descreva os itens opcionais que acompanham o veículo : som, gps, camera de ré, etc..">
+					        </textarea>
+						
+			            </div>
+			            
+			            <!--  chekboxes acessórios -->
+			            <div class="form-group col-6">
+						
+							<label for="cbManual">Acessórios</label>
+							<div class="row">
+							   <div class="col">
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbManual" jsf:value="#{mbeanVeiculo.veiculo.manual}" />
+				                        <label class="form-check-label" for="cbManual">Manual</label>
+				                    </div>
+						            
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbChaveReserva" jsf:value="#{mbeanVeiculo.veiculo.chaveReserva}" />
+				                        <label class="form-check-label" for="cbChaveReserva">ChaveReserva</label>
+				                    </div>
+						            
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbMacaco" jsf:value="#{mbeanVeiculo.veiculo.macaco}" />
+				                        <label class="form-check-label" for="cbMacaco">Macaco</label>
+				                    </div>
+						           
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbTriangulo" jsf:value="#{mbeanVeiculo.veiculo.triangulo}" />
+				                        <label class="form-check-label" for="cbTriangulo">Triângulo</label>
+				                    </div>
+						            
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbStep" jsf:value="#{mbeanVeiculo.veiculo.step}" />
+				                        <label class="form-check-label" for="cbStep">Step</label>
+				                    </div>
+						            
+						            <div class="form-check form-check-inline">
+				                        <input class="form-check-input" type="checkbox" jsf:id="cbChaveRoda" jsf:value="#{mbeanVeiculo.veiculo.chaveRoda}" />
+				                        <label class="form-check-label" for="cbChaveRoda">Chave roda</label>
+				                    </div>
+				            	 </div>
+				            </div>
+		            	    
+	            	    </div>
+		              </div>
+				            
+		              <input type       = "submit" 
+						     class      = "btn btn-primary" 
+						     jsf:id     = "btnSalvar"
+						     jsf:action = "#{mbeanVeiculo.salvar()}" 
+						     value      = "Salvar" />
+				</form>
+								
+    		</ui:define>
+      </ui:composition>
+      
+    </h:body>
+
+</html>
