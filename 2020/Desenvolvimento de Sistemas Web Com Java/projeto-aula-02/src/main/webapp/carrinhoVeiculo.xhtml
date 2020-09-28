@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+				<h3 class="text-center">Carrinho de compras</h3>
+				<h4>Veiculos selecionados</h4>
+				<form jsf:id="formTable">
+				<table class="table table-sm">
+				  <thead>
+				    <tr>
+				      <th scope="col">Ações</th>
+				      <th scope="col">#</th>
+				      <th scope="col">Marca</th>
+				      <th scope="col">Ano</th>
+				      <th scope="col">Modelo</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <ui:repeat var="produto" value="#{mbeanCarrinhoVeiculo.produtosSelecionados}" varStatus="index">
+				    <tr>
+				       <td>
+
+		                   <button type="submit" 
+		                           class="btn btn-outline-danger" 
+		                           jsf:id="#{'del'.concat(index.index)}" 
+		                           jsf:action="#{mbeanCarrinhoVeiculo.remover(produto)}"
+		                           onclick=" if ( ! confirm( 'Confirma a exclusão #{produto.marca} ?' )) return false; " >
+		                           <i class="fa fa-trash-o"></i>
+		                           <f:ajax execute="@this" render=":formTable" />
+		                    </button>
+						</td>
+				      <td>#{produto.marca}</td>
+				      <td>#{produto.placa}</td>
+				      <td>#{produto.anoFabricacao}</td>
+				      <td>#{produto.anoModelo}</td>
+				    </tr>
+				    </ui:repeat>
+				  </tbody>
+				</table>
+				<a href="listagemDeVeiculos.jsf">Continuar comprando</a>
+				</form>
+
+	
+    		</ui:define>
+
+      </ui:composition>
+    </h:body>
+
+</html>
+	

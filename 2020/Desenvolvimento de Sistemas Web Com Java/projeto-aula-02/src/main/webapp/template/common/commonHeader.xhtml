@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" 
+      xmlns     = "http://www.w3.org/1999/xhtml"
+	  xmlns:ui  = "http://xmlns.jcp.org/jsf/facelets"
+	  >
+    <body>
+    <ui:composition>
+	    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="index.jsf">Sistema de vendas</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<!-- Clientes -->
+					<li class="nav-item dropdown">
+					    <a
+						   class="nav-link dropdown-toggle" href="#"
+						   id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						   aria-haspopup="true" aria-expanded="false"> Clientes 
+						</a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="cadastroCliente.jsf">Cadastro</a>
+							<a class="dropdown-item" href="listaCliente.jsf">Lista</a>
+						</div>
+					</li>
+					<!-- Restaurantes -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Restaurantes </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="cadastroRestaurante.jsf">Cadastro</a>
+							<a class="dropdown-item" href="listaRestaurante.jsf">Lista</a>
+						</div>
+					</li>
+					<!-- Veiculos -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Veículos </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="cadastroVeiculo.jsf">Cadastro</a>
+							<a class="dropdown-item" href="listaVeiculo.jsf">Lista</a>
+						</div>
+					</li>
+					<!-- Produtos -->
+					<li class="nav-item dropdown">
+					  <a class="nav-link dropdown-item" href="listagemDeVeiculos.jsf">Comprar Veículos</a>
+					</li>
+					<li class="nav-item dropdown">
+					  
+					  <a class="nav-link dropdown-item" href="carrinhoVeiculo.jsf"><i class="fa fa-shopping-cart"></i> Carrinho de compras</a>  
+					</li>
+				</ul>
+			</div>
+		</nav>
+		</ui:composition>
+    </body>
+</html>

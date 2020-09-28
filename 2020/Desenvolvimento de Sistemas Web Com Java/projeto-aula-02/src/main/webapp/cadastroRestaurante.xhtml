@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+  
+				<h3>Cadastro de Restaurantes</h3>
+				<form jsf:id="form">
+				    <input type="hidden" jsf:id    = "id"
+							             jsf:value = "#{mbeanRestaurante.restaurante.id}" />
+					<div class="form-group">
+						<label for="nome">Nome</label> 
+						<input type        = "text"
+							   class       = "form-control" 
+							   jsf:id      = "nome"
+							   jsf:value   = "#{mbeanRestaurante.restaurante.nome}"
+							   placeholder = "Digite o nome do restaurante" />
+					</div>
+					<div class="form-group">
+						<label for="endereco">Endereço</label> 
+						<input type        = "text"
+							   class       = "form-control" 
+							   jsf:id      = "endereco"
+							   jsf:value   = "#{mbeanRestaurante.restaurante.endereco}"
+							   placeholder = "Digite o endereço do restaurante" />
+					</div>
+					<div class="row">
+						<div class="form-group col-6">
+							<label for="cnpj">Cnpj</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "cnpj"
+								   jsf:value   = "#{mbeanRestaurante.restaurante.cnpj}"
+								   placeholder = "Digite o cnpj do restaurante" />
+						</div>
+		
+						<div class="form-group col-6">
+							<label for="telefone">Telefone</label> 
+							<input type        = "text"
+								   class       = "form-control" 
+								   jsf:id      = "telefone"
+								   jsf:value   = "#{mbeanRestaurante.restaurante.telefone}"
+								   placeholder = "Digite o telefone de contato" />
+						</div>
+					</div>
+					<div class="form-group pl-0 col-6 float-left">
+						<label for="descricaoAtividade">Descrição das especialidades</label>
+						<textarea class       = "form-control" 
+						          rows        = "3" 
+						          jsf:id      = "descricaoAtividade"
+								  jsf:value   = "#{mbeanRestaurante.restaurante.descricaoAtividade}"
+								  placeholder = "Descreva as principais atividades do restaurante">
+				        </textarea>
+						<input type       = "submit" 
+						       class      = "btn btn-primary" 
+						       jsf:id     = "btnSalvar"
+						       jsf:action = "#{mbeanRestaurante.salvarRestaurante()}" 
+						       value      = "Salvar" />
+		            </div>
+				</form>
+				
+				<!-- Pratos -->
+				<div class="col-6 float-left">
+		          <form jsf:id="formPrato">	
+				 	<div class="form-group">
+						<label for="descricaoPrato">Pratos</label>
+						<div class="input-group mb-3">
+							<input type="text" 
+							       class="form-control" 
+							       jsf:id="descricaoPrato" 
+							       jsf:value="#{mbeanRestaurante.prato.descricao}" 
+							       placeholder="Informe um prato do restaurante" />
+							<div class="input-group-append">
+							  <button type="submit" 
+							          jsf:id="btnSalvarPrato" 
+							          class="btn btn-primary"  
+							          jsf:action="#{mbeanRestaurante.salvarPrato()}" >
+							     <i class="fa fa-plus"></i>
+			                     <f:ajax execute="descricaoPrato" render=":formPrato" /> 
+							  </button>
+					        </div>
+						</div>
+						
+						<!-- Lista dos pratos -->
+			       		<h:panelGroup id="prato_lista">
+			       		  <div class="row">
+						     <ui:repeat var="_prato" 
+						                value="#{mbeanRestaurante.pratos}" 
+						                varStatus="index">
+						        <div class="mb-1 col-6">
+							      <button type="submit" 
+							              jsf:id="btnExcluirPrato" 
+							              class="btn btn-danger"  
+							              jsf:action="#{mbeanRestaurante.deletarPrato(_prato)}">
+							         <i class="fa fa-trash-o"></i>     
+							         <f:ajax execute="@this" render=":formPrato :prato_lista" /> 
+			  					  </button>
+			  					    #{index.index+1}. #{_prato.descricao}
+							    </div>
+							  </ui:repeat>
+							</div>
+						</h:panelGroup>
+				    </div>
+		          </form>
+				</div>
+				<div class="row"></div>		
+    		</ui:define>
+      </ui:composition>
+      
+    </h:body>
+
+</html>

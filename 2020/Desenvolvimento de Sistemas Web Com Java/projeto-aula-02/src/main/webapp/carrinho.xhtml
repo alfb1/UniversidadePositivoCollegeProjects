@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+				<h3 class="text-center">Carrinho de compras</h3>
+				<h4>Produtos selecionados</h4>
+				<form jsf:id="formTable">
+				<table class="table table-sm">
+				  <thead>
+				    <tr>
+				      <th scope="col">Ações</th>
+				      <th scope="col">#</th>
+				      <th scope="col">Nome</th>
+				      <th scope="col">Quantidade</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <ui:repeat var="produto" value="#{mbeanCarrinho.produtosSelecionados}" varStatus="index">
+				    <tr>
+				       <td>
+
+		                   <button type="submit" 
+		                           class="btn btn-outline-danger" 
+		                           jsf:id="#{'del'.concat(index.index)}" 
+		                           jsf:action="#{mbeanCarrinho.removerProduto(produto)}"
+		                           onclick=" if ( ! confirm( 'Confirma a exclusão #{produto.nome} ?' )) return false; " >
+		                           <i class="fa fa-trash-o"></i>
+		                           <f:ajax execute="@this" render=":formTable" />
+		                    </button>
+						</td>
+				      <td scope="row">#{produto.id}</td>
+				      <td>#{produto.nome}</td>
+				      <td> 
+
+		                   <button type="submit" 
+						           class="btn btn-outline-success" 
+						           jsf:id="#{'min_item'.concat(index.index)}" 
+						           jsf:action="#{mbeanCarrinho.decQuantidade(produto)}">
+		                           <i class="fa fa-minus"></i>
+		                           <f:ajax execute="@this" render=":formTable" />
+		                   </button>
+		                   <span class="badge badge-dark mr-1">#{produto.quantidade}</span>
+		                   
+		                   <button type="submit" 
+						           class="btn btn-outline-success" 
+						           jsf:id="#{'add_item'.concat(index.index)}" 
+						           jsf:action="#{mbeanCarrinho.sumQuantidade(produto)}">
+		                           <i class="fa fa-plus"></i>
+		                           <f:ajax execute="@this" render=":formTable" />
+		                   </button>
+		              </td>
+				      
+				    </tr>
+				    </ui:repeat>
+				  </tbody>
+				</table>
+				<a href="listagemDeProdutos.jsf">Continuar comprando</a>
+				</form>
+
+	
+    		</ui:define>
+
+      </ui:composition>
+    </h:body>
+
+</html>
+	

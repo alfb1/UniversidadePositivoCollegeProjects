@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:body>
+      <ui:composition template="/template/common/commonLayout.xhtml">
+
+    		<ui:define name="content">
+				<h3 class="text-center">Produtos disponíveis</h3>
+				<form jsf:id="formTable">
+				
+				<div class="row">
+				    <ui:repeat var="produto" value="#{mbeanListaDeProdutos.produtos}" varStatus="index">
+				   
+				    <div class="col-4">
+				       <div class="card mb-1">
+				         <div class="cord-body">
+				            <h4 class="card-title text-center">#{produto.nome}</h4>
+				            <p class="card-text">#{produto.descricao}</p>
+				            
+				            <div class=" text-center mb-1" >
+				             <div class=" btn-group" role="group" >
+						       <button type="submit" 
+						               class="btn btn-outline-primary" 
+						               aria-label="Left Align" 
+						               jsf:id="#{'edt'.concat(index.index)}" 
+						               jsf:action="#{mbeanCarrinho.adicionarProduto(produto)}" >
+		                           <i class="fa fa-shopping-cart"></i>
+		                       </button>
+		                      
+		                       </div>
+		                    </div>
+		                  </div>
+				       </div>
+				    </div>
+						
+				      
+				    </ui:repeat>
+				</div>
+				  
+				</form>
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination">
+				    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
+				</nav>
+	
+    		</ui:define>
+
+      </ui:composition>
+    </h:body>
+
+</html>
+	
